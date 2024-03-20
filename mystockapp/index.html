@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Stock Application</title>
 
+</head>
+<style>
+body {background-color: powderblue;}
+h1 {
+	font-family: Impact, sans-serif;
+	color: #CE5937;
+}
+p    {color: red;}
+</style>
+<body>
+  <form name="myform">
+    <h1 id="welcome">Get Stock Ticker Price</h1>
+    <b>Enter Stock Ticker:</b> <input type="string" name="stock"/>
+    <p>
+      <button type="button" onclick="myFunction()">Submit</button>
+    </p>
+
+  <script >
+    function myFunction() {
+    	var urlvariable;
+      	URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo";
+      	//https://www.alphavantage.co/documentation/
+
+      	urlvariable = document.myform.stock.value;
+      	alert("hello :: " + urlvariable);
+
+      	fetch(URL)
+		  	.then(response => response.json())
+		  	.then(data => console.log(data))
+  			.catch(error => console.error('Error:', error));
+
+	}
+</script>
+  </form>
+</body>
+</html>
